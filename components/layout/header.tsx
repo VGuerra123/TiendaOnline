@@ -190,20 +190,22 @@ export function Header() {
               <span className="font-bold hidden sm:inline">🚀 Envío Express Gratis +$150K</span>
               <span className="font-bold sm:hidden">🚀 Envío Gratis</span>
             </motion.div>
-            <motion.div 
-              className="flex items-center space-x-2 hidden md:flex"
+            <motion.div
+              className="hidden md:flex items-center space-x-2"
               whileHover={{ scale: 1.05 }}
             >
               <Shield className="w-4 h-4 text-emerald-400" />
               <span className="font-bold">⚡ Garantía Premium 5 años</span>
             </motion.div>
-            <motion.div 
-              className="flex items-center space-x-2 hidden lg:flex"
+
+            <motion.div
+              className="hidden lg:flex items-center space-x-2"
               whileHover={{ scale: 1.05 }}
             >
               <Award className="w-4 h-4 text-yellow-400" />
               <span className="font-bold">🛠️ Setup Pro Incluido</span>
             </motion.div>
+
           </div>
           <motion.div 
             className="flex items-center space-x-2"
