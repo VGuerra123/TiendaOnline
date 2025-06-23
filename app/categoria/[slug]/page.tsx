@@ -1,10 +1,10 @@
 import CategoryShell from './CategoryShell';
 
-/*  Si no vas a añadir más rutas dinámicas en runtime
-    establecemos `dynamicParams = false` para mejor
-    rendimiento (opcional)                                   */
+/*  Si tu conjunto de slugs es fijo (preconstruido)
+    marca dynamicParams = false para mejor optimización */
 export const dynamicParams = false;
 
+/*  Genera las rutas estáticas  */
 export async function generateStaticParams() {
   const categories = [
     'gaming',
@@ -14,7 +14,6 @@ export async function generateStaticParams() {
     'domotica',
     'accesorios',
   ];
-
   return categories.map((slug) => ({ slug }));
 }
 
@@ -23,6 +22,6 @@ interface CategoryPageProps {
 }
 
 export default function Category({ params }: CategoryPageProps) {
-  //  Delegamos la UI a nuestro wrapper cliente
+  /*  Encapsulamos toda la UI cliente en CategoryShell */
   return <CategoryShell slug={params.slug} />;
 }

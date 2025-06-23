@@ -4,23 +4,18 @@ import { Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import { CategoryPage } from '@/components/pages/category-page';
 
-/*  ─────────────────────────────────────────────
-    Header & Footer solo se hidratan en el cliente
-    (evitamos SSR porque usan hooks de navegador)
-   ───────────────────────────────────────────── */
+/* Header & Footer sólo se hidratan en el cliente */
 const Header = dynamic(
   () => import('@/components/layout/header').then((m) => m.Header),
-  { ssr: false }
+  { ssr: false },
 );
 
 const Footer = dynamic(
   () => import('@/components/layout/footer').then((m) => m.Footer),
-  { ssr: false }
+  { ssr: false },
 );
 
-/*  ─────────────
-    Loading Ring
-   ───────────── */
+/* Loader reutilizable */
 function Loading() {
   return (
     <div className="min-h-screen flex items-center justify-center">
@@ -42,7 +37,7 @@ export default function CategoryShell({ slug }: Props) {
 
       <main className="flex-1">
         <Suspense fallback={<Loading />}>
-          {/*  Contenido real de la categoría  */}
+          {/* Contenido real de la categoría */}
           <CategoryPage slug={slug} />
         </Suspense>
       </main>
