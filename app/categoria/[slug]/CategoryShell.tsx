@@ -2,9 +2,8 @@
 
 import { Suspense } from 'react';
 import dynamic from 'next/dynamic';
-import { CategoryPage } from '@/components/pages/category-page';
 
-/* Header & Footer sólo se hidratan en el cliente */
+/* ─── Cargas dinámicas sólo en cliente ─── */
 const Header = dynamic(
   () => import('@/components/layout/header').then((m) => m.Header),
   { ssr: false },
@@ -12,6 +11,14 @@ const Header = dynamic(
 
 const Footer = dynamic(
   () => import('@/components/layout/footer').then((m) => m.Footer),
+  { ssr: false },
+);
+
+const CategoryPage = dynamic(
+  () =>
+    import('@/components/pages/category-page').then(
+      (m) => m.CategoryPage,
+    ),
   { ssr: false },
 );
 
@@ -37,7 +44,6 @@ export default function CategoryShell({ slug }: Props) {
 
       <main className="flex-1">
         <Suspense fallback={<Loading />}>
-          {/* Contenido real de la categoría */}
           <CategoryPage slug={slug} />
         </Suspense>
       </main>
